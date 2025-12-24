@@ -6,9 +6,11 @@ const SignIn = () => {
   //useRef --> importance
   //Hw --> useRef on password
   const email = useRef("");
+  const password = useRef("");
 
   const signIn = () => {
     console.log(email.current.value);
+    console.log(password.current.value);
   };
 
   return (
@@ -30,6 +32,7 @@ const SignIn = () => {
               className="border border-solid rounded-md"
               type="password"
               placeholder="Enter password"
+              ref={password}
             />
           </div>
           <button className="border border-solid border-violet-400 m-3 hover:bg-gray-200 transition delay-150 duration-300 rounded-md">
