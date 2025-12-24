@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 ]);
 
 // we will not be able to go to restaurants page, unless we login.
-// Route guards..
+// Route guards
 
 function App() {
   return <RouterProvider router={router} />;
