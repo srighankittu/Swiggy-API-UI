@@ -6,8 +6,8 @@ const Footer = () => {
       <div className="flex justify-between items-center">
         <div className="w-10 m-8">
           <img src={NAV_LOGO} />
-          <p className="w-60">© 2025 All Rights are Reserved</p>
-          <p className="w-40">♥ Built with heast</p>
+          <p className="w-60">© 2025.All Rights are Reserved</p>
+          <p className="w-40">♥ Built with heart</p>
         </div>
         <ul className="flex gap-20 m-8">
           <li>Contact Us</li>
