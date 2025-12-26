@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const SignIn = () => {
   // let email = "random";
@@ -7,10 +7,38 @@ const SignIn = () => {
   //Hw --> useRef on password
   const email = useRef("");
   const password = useRef("");
+  const [validationError, setValidationError] = useState("");
 
   const signIn = () => {
+    const current_email = email.current.value.trim();
+    const current_password = password.current.value.trim();
+
+    if (!current_email || !current_password) {
+      setValidationError("Email and Password are required fields");
+      return;
+    }
+
+    //Email format validation
+    //Regex
+    //HW - try to decode it,
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(current_email)) {
+      setValidationError("Invalid Email");
+      return;
+    }
+
+    // Regex validation for password
+    //min 8, max 25, 1 spl, 1 cap
+
+    // if(!current_email.includes('@')) return "Invalid";
+    // if (!current_email.endsWith('.com') || !) return "Invalid";
+    //validations.
+
+    // Bug, clear validation message-HW
     console.log(email.current.value);
     console.log(password.current.value);
+    //try to create a useContext, isLoggedIN
+    // await signIn()
   };
 
   return (
@@ -35,6 +63,7 @@ const SignIn = () => {
               ref={password}
             />
           </div>
+          <div className="text-red-500 text-xs m-3">{validationError}</div>
           <button className="border border-solid border-violet-400 m-3 hover:bg-gray-200 transition delay-150 duration-300 rounded-md">
             <span className="m-2" onClick={signIn}>
               Sign in
@@ -42,6 +71,7 @@ const SignIn = () => {
           </button>
           <div className="m-3">
             New User? Click <span>here</span> to sign up!
+            {/* useNavigate - HW*/}
           </div>
         </div>
       </div>
