@@ -27,6 +27,35 @@ const SignIn = () => {
       return;
     }
 
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}$/;
+    if (!passwordRegex.test(current_password)) {
+      setValidationError(
+        "passeord must be of 8 characters and include an uppercase,lowercase,a special character and a number"
+      );
+      return;
+    }
+    // if (!/.{8,}/.test(current_password)) {
+    //   setValidationError("Password must be of 8 characters");
+    //   return;
+    // }
+    // if (!/[a-z]/.test(current_password)) {
+    //   setValidationError("Atleast one character should be in lowercase");
+    //   return;
+    // }
+    // if (!/[A-Z]/.test(current_password)) {
+    //   setValidationError("Password must have one capital letter");
+    //   return;
+    // }
+    // if (!/[!@#$%^&*()]/.test(current_password)) {
+    //   setValidationError("Must include a special character");
+    //   return;
+    // }
+    // if (!/[0-9]/.test(current_password)) {
+    //   setValidationError("Password must have a numerical");
+    //   return;
+    // }
+
     // Regex validation for password
     //min 8, max 25, 1 spl, 1 cap
 
@@ -35,6 +64,9 @@ const SignIn = () => {
     //validations.
 
     // Bug, clear validation message-HW
+
+    setValidationError("");
+
     console.log(email.current.value);
     console.log(password.current.value);
     //try to create a useContext, isLoggedIN
