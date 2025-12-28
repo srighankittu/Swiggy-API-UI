@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   // let email = "random";
@@ -8,6 +9,7 @@ const SignIn = () => {
   const email = useRef("");
   const password = useRef("");
   const [validationError, setValidationError] = useState("");
+  const navigate = useNavigate();
 
   const signIn = () => {
     const current_email = email.current.value.trim();
@@ -102,9 +104,14 @@ const SignIn = () => {
             </span>
           </button>
           <div className="m-3">
-            New User? Click <span>here</span> to sign up!
+            New User? Click {" "} 
+            <span onClick={() => navigate("/SignUp")}
+            className="text-blue-600 cursor-pointer underline"
+            >here</span>{" "}
+            to sign up!
             {/* useNavigate - HW*/}
           </div>
+
         </div>
       </div>
     </div>
