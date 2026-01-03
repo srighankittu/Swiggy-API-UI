@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   // let email = "random";
@@ -67,12 +67,25 @@ const SignIn = () => {
 
     // Bug, clear validation message-HW
 
-    setValidationError("");
-
     console.log(email.current.value);
     console.log(password.current.value);
+
+    const EXPIRY = 60 * 60 * 1000;
+
+    // 123123123123123 ==> elapsed from 2000 12 00 AM jan1
+    // [], dic, object
+    let loginData = {
+      email: email.current.value,
+      password: password.current.value,
+      expiry: Date.now() + EXPIRY,
+    };
+
+    localStorage.setItem("auth", JSON.stringify(loginData));
+
     //try to create a useContext, isLoggedIN
     // await signIn()
+    navigate("/restaurant");
+    setValidationError("");
   };
 
   return (
@@ -104,19 +117,33 @@ const SignIn = () => {
             </span>
           </button>
           <div className="m-3">
-            New User? Click {" "} 
-            <span onClick={() => navigate("/SignUp")}
-            className="text-blue-600 cursor-pointer underline"
-            >here</span>{" "}
+            New User? Click{" "}
+            <span
+              onClick={() => navigate("/sign-up")}
+              className="text-blue-600 cursor-pointer underline"
+            >
+              here
+            </span>{" "}
             to sign up!
             {/* useNavigate - HW*/}
           </div>
-
         </div>
       </div>
     </div>
   );
 };
 
-//localstorage, sessionstorage, cookiestorage
+//localstorage, sessionstorage, cookiestorage (databases)
+// 3 ways to store data in our browser
+// localstore (key:vlaue) --> it will stay there forever, //5mb --> session storage, cookie --256kb,
+// when i close and open
+// until we clear
+// local storage operations are extremely heavy,
+// synchronous and will block the mian thread.
+// js is a sync, single threaded,
+
+// s
+
+// Authguardfs --> Will prevnt us from proceding furthur, it just navigate us back to login page.
+
 export default SignIn;

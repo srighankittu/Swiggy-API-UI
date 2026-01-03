@@ -4,6 +4,8 @@ import Landing from "./components/Landing";
 import About from "./components/About";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import RestaurantHome from "./components/RestaurantHome";
+import ProtecteRoute from "./components/ProtecteRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,16 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />,
       },
+      {
+        path: "restaurant",
+        element: (
+          <ProtecteRoute>
+            <RestaurantHome />
+          </ProtecteRoute>
+        ),
+      },
+      {},
+      {},
     ],
   },
 ]);
