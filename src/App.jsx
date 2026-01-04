@@ -6,6 +6,8 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import RestaurantHome from "./components/RestaurantHome";
 import ProtecteRoute from "./components/ProtecteRoute";
+import Restaurants from "./components/Restaurants";
+import Offers from "./components/Offers";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +38,22 @@ const router = createBrowserRouter([
           </ProtecteRoute>
         ),
       },
-      {},
-      {},
+      {
+        path: "restaurantDetails",
+        element: (
+          <ProtecteRoute>
+            <Restaurants />
+          </ProtecteRoute>
+        ),
+      },
+      {
+        path: "offers",
+        element: (
+          <ProtecteRoute>
+            <Offers />
+          </ProtecteRoute>
+        ),
+      },
     ],
   },
 ]);
