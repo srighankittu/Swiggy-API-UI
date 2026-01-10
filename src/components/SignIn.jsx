@@ -85,8 +85,9 @@ const SignIn = () => {
     //try to create a useContext, isLoggedIN
     // await signIn()
     navigate("/restaurant");
-    navigate("/restaurantDetails");
-    navigate("/offers");
+    // navigate("/fetch-data");
+    // navigate("/restaurantDetails");
+    // navigate("/offers");
     setValidationError("");
   };
 
