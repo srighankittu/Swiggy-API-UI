@@ -22,7 +22,13 @@ const RestaurantHome = () => {
     fetchSwiggyData();
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      {restaurants.map((restaurant) => {
+        return <div>{restaurant.info.name}</div>;
+      })}
+    </div>
+  );
 };
 
 export default RestaurantHome;
