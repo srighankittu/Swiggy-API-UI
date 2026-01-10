@@ -8,6 +8,7 @@ import RestaurantHome from "./components/RestaurantHome";
 import ProtecteRoute from "./components/ProtecteRoute";
 import Restaurants from "./components/Restaurants";
 import Offers from "./components/Offers";
+import FetchData from "./components/FetchData";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "fetch-data",
+        element: <FetchData />,
       },
       {
         path: "restaurant",
