@@ -9,6 +9,7 @@ import ProtecteRoute from "./components/ProtecteRoute";
 import Restaurants from "./components/Restaurants";
 import Offers from "./components/Offers";
 import FetchData from "./components/FetchData";
+import RestaurantPage from "./components/RestaurantPage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
         element: (
           <ProtecteRoute>
             <Offers />
+          </ProtecteRoute>
+        ),
+      },
+      {
+        path: "restaurant/:restaurantId/",
+        element: (
+          <ProtecteRoute>
+            <RestaurantPage />
           </ProtecteRoute>
         ),
       },
