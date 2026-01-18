@@ -1,28 +1,31 @@
-import { useNavigate } from "react-router-dom";
-import useSwiggyRestaurants from "../custom hooks/useSwiggyRestaurants";
+import { useSelector } from "react-redux";
 import RestaurantCard from "./ResturantCard";
+import restaurantEnhancementIndicator from "./component enhancement/restaurantEnhancementIndicator";
 
 const RestaurantHome = () => {
-  const { restaurants, err, loader } = useSwiggyRestaurants();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const { list, error, loading } = useSelector((state) => state.restaurant);
+  console.log(list);
 
-  if (loader) return <div>Loading...</div>;
-  if (err) return <div>Unable to detch data From API</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Data fetch Error</div>;
+
+  // HOC init
+  const EnhancedResCard = restaurantEnhancementIndicator(RestaurantCard);
+
   return (
     <div className="flex flex-wrap m-4">
-      {restaurants?.map((restaurant) => {
+      {list?.map((restaurant) => {
         return (
-          <RestaurantCard
+          <EnhancedResCard
             key={restaurant.info.id}
+            restaurant={restaurant}
             name={restaurant.info.name}
             area={restaurant.info.areaName}
             imgId={restaurant.info.cloudinaryImageId}
             rating={restaurant.info.avgRating}
             cusines={restaurant.info.cuisines}
             avgCost={restaurant.info.costForTwo}
-            onClick={() => {
-              navigate(`${restaurant.info.id}`);
-            }}
           />
         );
       })}

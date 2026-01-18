@@ -10,6 +10,7 @@ const RestaurantCard = ({
   cusines,
   avgCost,
   onClick,
+  indicators = [],
 }) => {
   return (
     <div
@@ -17,6 +18,13 @@ const RestaurantCard = ({
       onClick={onClick}
     >
       <div className="m-4">
+        {indicators.map((indicator) => {
+          return (
+            <span key={indicator.id} className={indicator.className}>
+              {indicator.icon} + {indicator.label}
+            </span>
+          );
+        })}
         <img src={SWIGGY_IMG + imgId} />
       </div>
       <div>

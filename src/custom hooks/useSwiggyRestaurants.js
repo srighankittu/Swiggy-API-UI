@@ -1,37 +1,29 @@
 import { useEffect } from "react";
 import { SWIGGY_API } from "../utils/Constants";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchStart, fetchSuccess, fetchError } from "../store/restaurantSlice";
 
 const useSwiggyRestaurants = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [err, setError] = useState(null);
+  const dispatch = useDispatch();
+
   const fetchSwiggyData = async () => {
     try {
-      setLoader(true);
+      dispatch(fetchStart());
       const response = await fetch(SWIGGY_API);
       const data = await response.json();
-      const allRestaurants =
+      const restaurants =
         data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      console.log(allRestaurants);
-      setRestaurants(allRestaurants);
+      console.log(restaurants);
+      // Dispatching an action
+      dispatch(fetchSuccess(restaurants));
     } catch (err) {
-      setError(err);
-    } finally {
-      setLoader(false);
+      dispatch(fetchError(err));
     }
   };
   useEffect(() => {
     fetchSwiggyData();
   }, []);
-
-  return {
-    restaurants,
-    err,
-    loader,
-    setRestaurants,
-  };
 };
 
 export default useSwiggyRestaurants;

@@ -10,6 +10,7 @@ import Restaurants from "./components/Restaurants";
 import Offers from "./components/Offers";
 import FetchData from "./components/FetchData";
 import RestaurantPage from "./components/RestaurantPage";
+import useSwiggyRestaurants from "./custom hooks/useSwiggyRestaurants";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,7 @@ const router = createBrowserRouter([
 // Route guards
 
 function App() {
+  useSwiggyRestaurants();
   return <RouterProvider router={router} />;
 }
 
